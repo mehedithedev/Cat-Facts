@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import  Axios  from 'axios'
 
+
 function facts() {
     const [factOfCat, setFactOfCat]= useState('')
     // fetch('https://catfact.ninja/fact')
@@ -21,12 +22,13 @@ function facts() {
   
 
     return (
-    <div>
-        <h1>{factOfCat}</h1>
+    <div className='catfacts'>
+        <h1>Cat Facts 😸</h1>
+        <h2>{factOfCat}</h2>
 
         <button
             onClick={fetchCatFact}
-        >Get Cat fact</button>
+        >meow 🐱</button>
     </div>
   )
 }
