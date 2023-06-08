@@ -35,7 +35,7 @@
     color: darkgray;
     /* Add some hover animation effect */
     box-shadow: 0px 0px 40px white;
-    cli
+    cursor: pointer;
 
 }
 body{
