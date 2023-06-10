@@ -1,36 +1,23 @@
 import React, { useEffect, useState } from 'react'
 import  Axios  from 'axios'
+import { useQuery } from '@tanstack/react-query'
 
+function Facts() {
+   const {data, isLoading} = useQuery(['cat'], ()=>{
+    return(
+        Axios.get('https://catfact.ninja/fact')
+        .then((res)=>res.data)
+    )
+   })
 
-function facts() {
-    const [factOfCat, setFactOfCat]= useState('')
-    // fetch('https://catfact.ninja/fact')
-    //     .then((response)=> response.json())
-    //     .then((data)=>{
-    //         console.log(data)
-    //     })
-
-    const fetchCatFact=()=>{
-        Axios.get("https://catfact.ninja/fact")
-        .then((res)=>setFactOfCat(res.data.fact))
-    }
-    // Let's use axios to get things done:
-    useEffect(()=>{
-        fetchCatFact()
-    }, [])
-
-  
+   if (isLoading){
+        return <h1>Loading...</h1>
+   }
 
     return (
     <div className='catfacts'>
         <h1>Cat Facts 😸</h1>
-        <h2>{factOfCat}</h2>
-
-        <button
-            onClick={fetchCatFact}
-        >meow 🐱</button>
+        <h2>{data?.fact}</h2>
     </div>
-  )
+    )
 }
-
-export default facts
